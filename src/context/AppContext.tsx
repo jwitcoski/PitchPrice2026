@@ -1,0 +1,144 @@
+import {
+  createContext,
+  useCallback,
+  useContext,
+  useEffect,
+  useMemo,
+  useState,
+  type ReactNode,
+} from 'react';
+import { enrichTeamsWithVenues } from '../lib/teamVenues';
+import type {
+  FixturesByStadium,
+  Persona,
+  Stadium,
+  Team,
+  TicketRange,
+  TicketsByStadium,
+} from '../types';
+
+interface AppContextValue {
+  persona: Persona | null;
+  teamId: string | null;
+  cityStadiumId: string | null;
+  onboardingComplete: boolean;
+  activeStadiumId: string | null;
+  stadiums: Stadium[];
+  teams: Team[];
+  fixtures: FixturesByStadium;
+  tickets: TicketsByStadium;
+  dataLoading: boolean;
+  completeOnboarding: (persona: Persona, teamId?: string, cityStadiumId?: string) => void;
+  resetOnboarding: () => void;
+  introGeneration: number;
+  selectionId: number;
+  setActiveStadiumId: (id: string | null) => void;
+  selectedTeam: Team | null;
+  activeStadium: Stadium | null;
+  activeTicket: TicketRange | null;
+  activeFixtures: import('../types').Fixture[];
+  demoMode: boolean;
+}
+
+const AppContext = createContext<AppContextValue | null>(null);
+
+export function AppProvider({ children }: { children: ReactNode }) {
+  const [persona, setPersona] = useState<Persona | null>(null);
+  const [teamId, setTeamId] = useState<string | null>(null);
+  const [cityStadiumId, setCityStadiumId] = useState<string | null>('sofi-stadium');
+  const [onboardingComplete, setOnboardingComplete] = useState(false);
+  const [activeStadiumId, setActiveStadiumId] = useState<string | null>(null);
+  const [stadiums, setStadiums] = useState<Stadium[]>([]);
+  const [teams, setTeams] = useState<Team[]>([]);
+  const [fixtures, setFixtures] = useState<FixturesByStadium>({});
+  const [tickets, setTickets] = useState<TicketsByStadium>({});
+  const [dataLoading, setDataLoading] = useState(true);
+  const [introGeneration, setIntroGeneration] = useState(0);
+  const [selectionId, setSelectionId] = useState(0);
+
+  const demoMode =
+    typeof window !== 'undefined' &&
+    new URLSearchParams(window.location.search).get('demo') === '1';
+
+  useEffect(() => {
+    Promise.all([
+      fetch('/data/stadiums.json').then((r) => r.json()),
+      fetch('/data/teams.json').then((r) => r.json()),
+      fetch('/data/fixtures.json').then((r) => r.json()),
+      fetch('/data/ticketData.json').then((r) => r.json()),
+    ])
+      .then(([s, t, f, tk]) => {
+        setStadiums(s);
+        setTeams(enrichTeamsWithVenues(t, f, s));
+        setFixtures(f);
+        setTickets(tk);
+      })
+      .finally(() => setDataLoading(false));
+  }, []);
+
+  const completeOnboarding = useCallback(
+    (p: Persona, tid?: string, sid?: string) => {
+      setPersona(p);
+      setTeamId(tid ?? null);
+      setCityStadiumId(sid ?? 'sofi-stadium');
+      setOnboardingComplete(true);
+      setActiveStadiumId(null);
+      setSelectionId((id) => id + 1);
+      sessionStorage.setItem('pitchprice-onboarded', '1');
+    },
+    [],
+  );
+
+  const resetOnboarding = useCallback(() => {
+    setOnboardingComplete(false);
+    setPersona(null);
+    setTeamId(null);
+    setActiveStadiumId(null);
+    setIntroGeneration((n) => n + 1);
+    sessionStorage.removeItem('pitchprice-onboarded');
+  }, []);
+
+  const selectedTeam = useMemo(
+    () => teams.find((t) => t.id === teamId) ?? null,
+    [teams, teamId],
+  );
+
+  const activeStadium = useMemo(
+    () => stadiums.find((s) => s.id === activeStadiumId) ?? null,
+    [stadiums, activeStadiumId],
+  );
+
+  const activeTicket = activeStadiumId ? tickets[activeStadiumId] ?? null : null;
+  const activeFixtures = activeStadiumId ? fixtures[activeStadiumId] ?? [] : [];
+
+  const value: AppContextValue = {
+    persona,
+    teamId,
+    cityStadiumId,
+    onboardingComplete,
+    activeStadiumId,
+    stadiums,
+    teams,
+    fixtures,
+    tickets,
+    dataLoading,
+    completeOnboarding,
+    resetOnboarding,
+    introGeneration,
+    selectionId,
+    setActiveStadiumId,
+    selectedTeam,
+    activeStadium,
+    activeTicket,
+    activeFixtures,
+    demoMode,
+  };
+
+  return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
+}
+
+export function useApp() {
+  const ctx = useContext(AppContext);
+  if (!ctx) throw new Error('useApp must be used within AppProvider');
+  return ctx;
+}

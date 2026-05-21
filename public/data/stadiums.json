@@ -1,0 +1,274 @@
+[
+  {
+    "id": "lumen-field",
+    "name": "Lumen Field",
+    "city": "Seattle",
+    "country": "USA",
+    "lng": -122.3316,
+    "lat": 47.5952,
+    "isOfficialHost2026": true,
+    "theme": {
+      "primary": "#005c5c",
+      "accent": "#69be28",
+      "water": "#0e3a5c",
+      "background": "#0a1218",
+      "land": "#1e4d3e",
+      "buildings3d": false
+    }
+  },
+  {
+    "id": "levis-stadium",
+    "name": "Levi's Stadium",
+    "city": "Santa Clara",
+    "country": "USA",
+    "lng": -121.9693,
+    "lat": 37.403,
+    "isOfficialHost2026": true,
+    "theme": {
+      "primary": "#5c6bc0",
+      "accent": "#ff9800",
+      "water": "#1a3a52",
+      "background": "#12141a",
+      "land": "#3d4f3f",
+      "buildings3d": true
+    }
+  },
+  {
+    "id": "sofi-stadium",
+    "name": "SoFi Stadium",
+    "city": "Los Angeles",
+    "country": "USA",
+    "lng": -118.264,
+    "lat": 33.953,
+    "isOfficialHost2026": true,
+    "theme": {
+      "primary": "#552583",
+      "accent": "#f9a825",
+      "water": "#3d2858",
+      "background": "#140810",
+      "land": "#5c3d20",
+      "buildings3d": true
+    }
+  },
+  {
+    "id": "att-stadium",
+    "name": "AT&T Stadium",
+    "city": "Arlington",
+    "country": "USA",
+    "lng": -97.0945,
+    "lat": 32.7473,
+    "isOfficialHost2026": true,
+    "theme": {
+      "primary": "#041e42",
+      "accent": "#c4a000",
+      "water": "#2d4a6e",
+      "background": "#1a1008",
+      "land": "#6b4a32",
+      "buildings3d": true
+    }
+  },
+  {
+    "id": "nrg-stadium",
+    "name": "NRG Stadium",
+    "city": "Houston",
+    "country": "USA",
+    "lng": -95.4107,
+    "lat": 29.6847,
+    "isOfficialHost2026": true,
+    "theme": {
+      "primary": "#eb6e1f",
+      "accent": "#418fde",
+      "water": "#1b3b5c",
+      "background": "#0c1018",
+      "land": "#3d5230",
+      "buildings3d": true
+    }
+  },
+  {
+    "id": "arrowhead-stadium",
+    "name": "Arrowhead Stadium",
+    "city": "Kansas City",
+    "country": "USA",
+    "lng": -94.4839,
+    "lat": 39.0489,
+    "isOfficialHost2026": true,
+    "theme": {
+      "primary": "#004687",
+      "accent": "#e31837",
+      "water": "#1e4058",
+      "background": "#120e0c",
+      "land": "#4a5d32",
+      "buildings3d": false
+    }
+  },
+  {
+    "id": "mercedes-benz-stadium",
+    "name": "Mercedes-Benz Stadium",
+    "city": "Atlanta",
+    "country": "USA",
+    "lng": -84.401,
+    "lat": 33.755,
+    "isOfficialHost2026": true,
+    "theme": {
+      "primary": "#a6192e",
+      "accent": "#f4a83b",
+      "water": "#1a3d52",
+      "background": "#12100e",
+      "land": "#3d5c38",
+      "buildings3d": true
+    }
+  },
+  {
+    "id": "gillette-stadium",
+    "name": "Gillette Stadium",
+    "city": "Foxborough",
+    "country": "USA",
+    "lng": -71.2643,
+    "lat": 42.0909,
+    "isOfficialHost2026": true,
+    "theme": {
+      "primary": "#002244",
+      "accent": "#c8102e",
+      "water": "#1e4a5f",
+      "background": "#0e1216",
+      "land": "#2f4a3a",
+      "buildings3d": false
+    }
+  },
+  {
+    "id": "metlife-stadium",
+    "name": "MetLife Stadium",
+    "city": "East Rutherford",
+    "country": "USA",
+    "lng": -74.074,
+    "lat": 40.813,
+    "isOfficialHost2026": true,
+    "theme": {
+      "primary": "#3d4f5f",
+      "accent": "#f7c948",
+      "water": "#1a2838",
+      "background": "#06080c",
+      "land": "#2a3038",
+      "buildings3d": true
+    }
+  },
+  {
+    "id": "lincoln-financial-field",
+    "name": "Lincoln Financial Field",
+    "city": "Philadelphia",
+    "country": "USA",
+    "lng": -75.1675,
+    "lat": 39.9008,
+    "isOfficialHost2026": true,
+    "theme": {
+      "primary": "#004c54",
+      "accent": "#c41e3a",
+      "water": "#1c4858",
+      "background": "#0e1210",
+      "land": "#3a5240",
+      "buildings3d": true
+    }
+  },
+  {
+    "id": "hard-rock-stadium",
+    "name": "Hard Rock Stadium",
+    "city": "Miami Gardens",
+    "country": "USA",
+    "lng": -80.2389,
+    "lat": 25.958,
+    "isOfficialHost2026": true,
+    "theme": {
+      "primary": "#f05a28",
+      "accent": "#00c4b3",
+      "water": "#0d6e7a",
+      "background": "#100c14",
+      "land": "#3a6b48",
+      "buildings3d": true
+    }
+  },
+  {
+    "id": "bmo-field",
+    "name": "BMO Field",
+    "city": "Toronto",
+    "country": "Canada",
+    "lng": -79.4186,
+    "lat": 43.6332,
+    "isOfficialHost2026": true,
+    "theme": {
+      "primary": "#ce1126",
+      "accent": "#e8eef4",
+      "water": "#1a4a68",
+      "background": "#0c1014",
+      "land": "#2d4a38",
+      "buildings3d": true
+    }
+  },
+  {
+    "id": "bc-place",
+    "name": "BC Place",
+    "city": "Vancouver",
+    "country": "Canada",
+    "lng": -123.112,
+    "lat": 49.2768,
+    "isOfficialHost2026": true,
+    "theme": {
+      "primary": "#4a7c9b",
+      "accent": "#9bcc5a",
+      "water": "#1e5268",
+      "background": "#0c1418",
+      "land": "#2d5c42",
+      "buildings3d": true
+    }
+  },
+  {
+    "id": "estadio-azteca",
+    "name": "Estadio Azteca",
+    "city": "Mexico City",
+    "country": "Mexico",
+    "lng": -99.1506,
+    "lat": 19.3029,
+    "isOfficialHost2026": true,
+    "theme": {
+      "primary": "#006847",
+      "accent": "#ce1126",
+      "water": "#1a5c4a",
+      "background": "#120c08",
+      "land": "#4a3528",
+      "buildings3d": true
+    }
+  },
+  {
+    "id": "estadio-akron",
+    "name": "Estadio Akron",
+    "city": "Guadalajara",
+    "country": "Mexico",
+    "lng": -103.4631,
+    "lat": 20.6818,
+    "isOfficialHost2026": true,
+    "theme": {
+      "primary": "#c8102e",
+      "accent": "#f4c430",
+      "water": "#24588",
+      "background": "#101018",
+      "land": "#4a5030",
+      "buildings3d": true
+    }
+  },
+  {
+    "id": "estadio-bbva",
+    "name": "Estadio BBVA",
+    "city": "Monterrey",
+    "country": "Mexico",
+    "lng": -100.2919,
+    "lat": 25.6866,
+    "isOfficialHost2026": true,
+    "theme": {
+      "primary": "#1e3a5f",
+      "accent": "#c4a574",
+      "water": "#2a4a5c",
+      "background": "#0e0e10",
+      "land": "#5c4a38",
+      "buildings3d": true
+    }
+  }
+]

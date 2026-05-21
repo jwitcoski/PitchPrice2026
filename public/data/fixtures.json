@@ -1,0 +1,121 @@
+{
+  "lumen-field": [
+    { "date": "June 15, 2026", "matchup": "Belgium vs. Egypt", "stage": "Group G" },
+    { "date": "June 19, 2026", "matchup": "United States vs. Australia", "stage": "Group D" },
+    { "date": "June 24, 2026", "matchup": "Play-off winner vs. Qatar", "stage": "Group B" },
+    { "date": "June 26, 2026", "matchup": "Egypt vs. IR Iran", "stage": "Group G" },
+    { "date": "July 1, 2026", "matchup": "Round of 32", "stage": "Knockout" },
+    { "date": "July 6, 2026", "matchup": "Round of 16", "stage": "Knockout" }
+  ],
+  "levis-stadium": [
+    { "date": "June 13, 2026", "matchup": "Qatar vs. Switzerland", "stage": "Group B" },
+    { "date": "June 16, 2026", "matchup": "Austria vs. Jordan", "stage": "Group J" },
+    { "date": "June 19, 2026", "matchup": "Play-off winner vs. Paraguay", "stage": "Group D" },
+    { "date": "June 22, 2026", "matchup": "Jordan vs. Algeria", "stage": "Group J" },
+    { "date": "June 25, 2026", "matchup": "Paraguay vs. Australia", "stage": "Group D" },
+    { "date": "July 1, 2026", "matchup": "Round of 32", "stage": "Knockout" }
+  ],
+  "sofi-stadium": [
+    { "date": "June 12, 2026", "matchup": "United States vs. Paraguay", "stage": "Group D" },
+    { "date": "June 15, 2026", "matchup": "IR Iran vs. New Zealand", "stage": "Group G" },
+    { "date": "June 18, 2026", "matchup": "Switzerland vs. Bosnia & Herzegovina", "stage": "Group B" },
+    { "date": "June 21, 2026", "matchup": "Belgium vs. IR Iran", "stage": "Group G" },
+    { "date": "June 25, 2026", "matchup": "Play-off winner vs. United States", "stage": "Group D" },
+    { "date": "July 10, 2026", "matchup": "Quarterfinal", "stage": "Knockout" }
+  ],
+  "att-stadium": [
+    { "date": "June 14, 2026", "matchup": "Netherlands vs. Japan", "stage": "Group F" },
+    { "date": "June 17, 2026", "matchup": "England vs. Croatia", "stage": "Group L" },
+    { "date": "June 22, 2026", "matchup": "Argentina vs. Austria", "stage": "Group J" },
+    { "date": "June 25, 2026", "matchup": "Japan vs. Play-off winner", "stage": "Group F" },
+    { "date": "June 27, 2026", "matchup": "Jordan vs. Argentina", "stage": "Group J" },
+    { "date": "July 14, 2026", "matchup": "Semifinal", "stage": "Knockout" }
+  ],
+  "nrg-stadium": [
+    { "date": "June 14, 2026", "matchup": "Germany vs. Curaçao", "stage": "Group E" },
+    { "date": "June 17, 2026", "matchup": "Portugal vs. Play-off winner", "stage": "Group K" },
+    { "date": "June 20, 2026", "matchup": "Netherlands vs. Play-off winner", "stage": "Group F" },
+    { "date": "June 23, 2026", "matchup": "Portugal vs. Uzbekistan", "stage": "Group K" },
+    { "date": "June 26, 2026", "matchup": "Cabo Verde vs. Saudi Arabia", "stage": "Group H" },
+    { "date": "June 29, 2026", "matchup": "Round of 32", "stage": "Knockout" }
+  ],
+  "arrowhead-stadium": [
+    { "date": "June 16, 2026", "matchup": "Argentina vs. Algeria", "stage": "Group J" },
+    { "date": "June 20, 2026", "matchup": "Ecuador vs. Curaçao", "stage": "Group E" },
+    { "date": "June 25, 2026", "matchup": "Tunisia vs. Netherlands", "stage": "Group F" },
+    { "date": "June 27, 2026", "matchup": "Algeria vs. Austria", "stage": "Group J" },
+    { "date": "July 11, 2026", "matchup": "Quarterfinal", "stage": "Knockout" }
+  ],
+  "mercedes-benz-stadium": [
+    { "date": "June 15, 2026", "matchup": "Spain vs. Cabo Verde", "stage": "Group H" },
+    { "date": "June 18, 2026", "matchup": "Play-off winner vs. South Africa", "stage": "Group A" },
+    { "date": "June 21, 2026", "matchup": "Spain vs. Saudi Arabia", "stage": "Group H" },
+    { "date": "June 24, 2026", "matchup": "Morocco vs. Haiti", "stage": "Group C" },
+    { "date": "June 27, 2026", "matchup": "Play-off winner vs. Uzbekistan", "stage": "Group K" },
+    { "date": "July 15, 2026", "matchup": "Semifinal", "stage": "Knockout" }
+  ],
+  "hard-rock-stadium": [
+    { "date": "June 15, 2026", "matchup": "Saudi Arabia vs. Uruguay", "stage": "Group H" },
+    { "date": "June 21, 2026", "matchup": "Uruguay vs. Cabo Verde", "stage": "Group H" },
+    { "date": "June 24, 2026", "matchup": "Scotland vs. Brazil", "stage": "Group C" },
+    { "date": "June 27, 2026", "matchup": "Colombia vs. Portugal", "stage": "Group K" },
+    { "date": "July 18, 2026", "matchup": "Third-place match", "stage": "Knockout" }
+  ],
+  "lincoln-financial-field": [
+    { "date": "June 14, 2026", "matchup": "Côte d'Ivoire vs. Ecuador", "stage": "Group E" },
+    { "date": "June 19, 2026", "matchup": "Brazil vs. Haiti", "stage": "Group C" },
+    { "date": "June 22, 2026", "matchup": "France vs. Play-off winner", "stage": "Group I" },
+    { "date": "June 25, 2026", "matchup": "Curaçao vs. Côte d'Ivoire", "stage": "Group E" },
+    { "date": "June 27, 2026", "matchup": "Croatia vs. Ghana", "stage": "Group L" }
+  ],
+  "metlife-stadium": [
+    { "date": "June 13, 2026", "matchup": "Brazil vs. Morocco", "stage": "Group C" },
+    { "date": "June 16, 2026", "matchup": "France vs. Senegal", "stage": "Group I" },
+    { "date": "June 22, 2026", "matchup": "Norway vs. Senegal", "stage": "Group I" },
+    { "date": "June 25, 2026", "matchup": "Ecuador vs. Germany", "stage": "Group E" },
+    { "date": "June 27, 2026", "matchup": "Panama vs. England", "stage": "Group L" },
+    { "date": "July 19, 2026", "matchup": "Final", "stage": "Final" }
+  ],
+  "gillette-stadium": [
+    { "date": "June 13, 2026", "matchup": "Haiti vs. Scotland", "stage": "Group C" },
+    { "date": "June 16, 2026", "matchup": "Play-off winner vs. Norway", "stage": "Group I" },
+    { "date": "June 19, 2026", "matchup": "Scotland vs. Morocco", "stage": "Group C" },
+    { "date": "June 23, 2026", "matchup": "England vs. Ghana", "stage": "Group L" },
+    { "date": "June 26, 2026", "matchup": "Norway vs. France", "stage": "Group I" },
+    { "date": "July 9, 2026", "matchup": "Quarterfinal", "stage": "Knockout" }
+  ],
+  "estadio-azteca": [
+    { "date": "June 11, 2026", "matchup": "Mexico vs. South Africa", "stage": "Group A · Tournament opener" },
+    { "date": "June 17, 2026", "matchup": "Uzbekistan vs. Colombia", "stage": "Group K" },
+    { "date": "June 24, 2026", "matchup": "Play-off winner vs. Mexico", "stage": "Group A" },
+    { "date": "July 5, 2026", "matchup": "Round of 16", "stage": "Knockout" }
+  ],
+  "estadio-akron": [
+    { "date": "June 11, 2026", "matchup": "Korea Republic vs. Play-off winner", "stage": "Group A" },
+    { "date": "June 18, 2026", "matchup": "Mexico vs. Korea Republic", "stage": "Group A" },
+    { "date": "June 23, 2026", "matchup": "Colombia vs. Play-off winner", "stage": "Group K" },
+    { "date": "June 26, 2026", "matchup": "Uruguay vs. Spain", "stage": "Group H" }
+  ],
+  "estadio-bbva": [
+    { "date": "June 14, 2026", "matchup": "Play-off winner vs. Tunisia", "stage": "Group F" },
+    { "date": "June 20, 2026", "matchup": "Tunisia vs. Japan", "stage": "Group F" },
+    { "date": "June 24, 2026", "matchup": "South Africa vs. Korea Republic", "stage": "Group A" },
+    { "date": "June 29, 2026", "matchup": "Round of 32", "stage": "Knockout" }
+  ],
+  "bc-place": [
+    { "date": "June 13, 2026", "matchup": "Australia vs. Play-off winner", "stage": "Group D" },
+    { "date": "June 18, 2026", "matchup": "Canada vs. Qatar", "stage": "Group B" },
+    { "date": "June 21, 2026", "matchup": "New Zealand vs. Egypt", "stage": "Group G" },
+    { "date": "June 24, 2026", "matchup": "Switzerland vs. Canada", "stage": "Group B" },
+    { "date": "June 26, 2026", "matchup": "New Zealand vs. Belgium", "stage": "Group G" },
+    { "date": "July 7, 2026", "matchup": "Round of 16", "stage": "Knockout" }
+  ],
+  "bmo-field": [
+    { "date": "June 12, 2026", "matchup": "Canada vs. Play-off winner", "stage": "Group B" },
+    { "date": "June 17, 2026", "matchup": "Ghana vs. Panama", "stage": "Group L" },
+    { "date": "June 20, 2026", "matchup": "Germany vs. Côte d'Ivoire", "stage": "Group E" },
+    { "date": "June 23, 2026", "matchup": "Panama vs. Croatia", "stage": "Group L" },
+    { "date": "June 26, 2026", "matchup": "Senegal vs. Play-off winner", "stage": "Group I" },
+    { "date": "July 2, 2026", "matchup": "Round of 32", "stage": "Knockout" }
+  ]
+}
