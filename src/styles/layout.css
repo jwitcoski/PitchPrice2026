@@ -62,6 +62,59 @@ body {
   min-height: 400px;
 }
 
+.map-3d-toggle {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  z-index: 10;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.1rem;
+  padding: 0.5rem 0.85rem;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 12px;
+  background: rgba(15, 23, 42, 0.82);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: #e2e8f0;
+  font-family: inherit;
+  cursor: pointer;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.15s ease;
+}
+
+.map-3d-toggle:hover {
+  border-color: rgba(100, 181, 246, 0.55);
+  transform: translateY(-1px);
+}
+
+.map-3d-toggle--on {
+  border-color: rgba(105, 240, 174, 0.55);
+  background: rgba(15, 40, 32, 0.9);
+}
+
+.map-3d-toggle-icon {
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: #69f0ae;
+}
+
+.map-3d-toggle-text {
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.map-3d-toggle-hint {
+  font-size: 0.68rem;
+  color: #94a3b8;
+  font-weight: 500;
+}
+
 .map-back-btn {
   position: absolute;
   top: 1rem;
@@ -228,6 +281,68 @@ body {
   margin-top: 0.2rem;
 }
 
+.fixture-row {
+  display: block;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  border: none;
+  background: none;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: background 0.15s ease;
+}
+
+.fixture-row:hover {
+  background: rgba(254, 203, 0, 0.08);
+}
+
+.fixture-row--active {
+  background: rgba(0, 35, 149, 0.35);
+  outline: 1px solid rgba(254, 203, 0, 0.45);
+  padding: 0.35rem 0.5rem;
+  margin: -0.35rem -0.5rem;
+}
+
+.bosnia-banter {
+  margin: 1rem 0 1.25rem;
+  padding: 1rem 1.1rem;
+  border-radius: 12px;
+  background: linear-gradient(160deg, rgba(0, 35, 149, 0.55), rgba(10, 18, 24, 0.9));
+  border: 1px solid rgba(254, 203, 0, 0.4);
+}
+
+.bosnia-banter-kicker {
+  margin: 0;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--bosnia-gold);
+}
+
+.bosnia-banter-title {
+  margin: 0.35rem 0 0;
+  font-size: 1rem;
+  color: #fff;
+}
+
+.bosnia-banter-body {
+  margin: 0.5rem 0 0;
+  font-size: 0.88rem;
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.88);
+}
+
+.bosnia-banter-hint {
+  margin: 0.65rem 0 0;
+  font-size: 0.75rem;
+  color: var(--muted);
+  font-style: italic;
+}
+
 /* Ticket bar */
 .ticket-block {
   margin-top: 1.5rem;
@@ -274,21 +389,41 @@ body {
   z-index: 10;
 }
 
-.ticket-bar-track:hover .ticket-bar-tooltip {
+.ticket-bar-track:hover .ticket-bar-tooltip,
+.ticket-bar-track--demo-reveal .ticket-bar-tooltip {
   opacity: 1;
   transform: translateY(0);
 }
 
 .ticket-disclaimer {
-  font-size: 0.72rem;
-  color: var(--muted);
-  margin: 0.5rem 0 0;
-}
-
-.ticket-cats {
   font-size: 0.75rem;
   color: var(--muted);
-  margin: 0.25rem 0 0;
+  margin: 0.55rem 0 0;
+  line-height: 1.45;
+}
+
+.ticket-tiers-heading {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: #b8c5d6;
+  margin: 0.65rem 0 0.35rem;
+  letter-spacing: 0.02em;
+}
+
+.ticket-tiers {
+  margin: 0;
+  padding-left: 1.1rem;
+  font-size: 0.72rem;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.ticket-tiers li {
+  margin-bottom: 0.2rem;
+}
+
+.ticket-tiers li:last-child {
+  margin-bottom: 0;
 }
 
 @media (max-width: 900px) {

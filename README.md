@@ -16,10 +16,14 @@ Open [http://localhost:5173](http://localhost:5173)
 ## Demo recording (`?demo=1`)
 
 1. Run `npm run dev` and open `http://localhost:5173?demo=1`
-2. Modal opens with Bosnia pre-selected; app auto-starts the team flow after ~3.5s
-3. Wait for fly-to choreography, then SoFi is auto-selected (~9s)
-4. Hover the ticket bar for the easter egg tooltip
-5. Record at 1920×1080 with `npm run build && npm run preview` for smoother WebGL
+2. **~0.4s** — City host mode, SoFi Stadium (Inglewood) pre-selected
+3. **~2.8s** — Onboarding completes; map flies to SoFi at the real stadium coordinates
+4. **~7.5s** — SoFi selected (sidebar fixtures + ticket bar)
+5. **~11.5s** — **MapTiler 3D** turns on (satellite hybrid, stadium label, 3D marker)
+6. **~16s** — Ticket easter egg tooltip appears (no hover needed)
+7. Record at 1920×1080 with `npm run build && npm run preview` for smoother WebGL
+
+Timings live in `src/lib/demoScript.ts`.
 
 ## Features
 
@@ -27,6 +31,7 @@ Open [http://localhost:5173](http://localhost:5173)
 - **65/35** map + sidebar layout
 - **Local JSON** for fixtures and ticket price ranges (no ticket API)
 - **IP-safe** — no FIFA logos; illustrative match copy
+- **MapTiler 3D at stadium level** — after you click a venue, use the **MapTiler 3D** toggle for terrain, extruded buildings, and a `@maptiler/3d` marker (no custom uploads)
 
 ## Data
 

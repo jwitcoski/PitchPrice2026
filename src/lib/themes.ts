@@ -109,6 +109,11 @@ export function applyPersonaTheme(map: Map, persona: Persona, team?: Team | null
   applyThemePreset(map, preset);
 }
 
+/** Terrain + extruded buildings without recoloring the basemap (for satellite/hybrid). */
+export function applyStadium3dEnvironment(map: Map, buildings = true) {
+  set3DMode(map, true, buildings);
+}
+
 export function set3DMode(map: Map, terrain: boolean, buildings: boolean) {
   try {
     if (terrain) {

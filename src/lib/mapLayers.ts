@@ -13,6 +13,7 @@ const STADIUM_SOURCE = 'stadiums-source';
 const STADIUM_GLOW = 'stadiums-glow';
 const STADIUM_PITCH = 'stadiums-pitch';
 const STADIUM_LAYER = 'stadiums-symbol';
+const STADIUM_LABEL = 'stadiums-label';
 const ARC_SOURCE = 'team-arc-source';
 const ARC_CASING_LAYER = 'team-arc-casing';
 const ARC_LAYER = 'team-arc-layer';
@@ -49,6 +50,8 @@ export interface StadiumLayerOptions {
   highlightIds?: string[];
   accentColor?: string;
   primaryColor?: string;
+  /** Stadium name under the marker (recommended for aerial 3D view). */
+  showStadiumNameLabels?: boolean;
 }
 
 export function stadiumsToGeoJSON(
@@ -82,6 +85,10 @@ export function stadiumsToGeoJSON(
   };
 }
 
+export function resetStadiumLayerBindings(map: Map) {
+  (map as Map & { _stadiumBound?: boolean })._stadiumBound = false;
+}
+
 function bindStadiumInteractions(map: Map) {
   if ((map as Map & { _stadiumBound?: boolean })._stadiumBound) return;
   (map as Map & { _stadiumBound?: boolean })._stadiumBound = true;
@@ -90,7 +97,7 @@ function bindStadiumInteractions(map: Map) {
     map.getCanvas().style.cursor = on ? 'pointer' : '';
   };
 
-  for (const layer of [STADIUM_LAYER, STADIUM_PITCH, STADIUM_GLOW]) {
+  for (const layer of [STADIUM_LAYER, STADIUM_PITCH, STADIUM_GLOW, STADIUM_LABEL]) {
     map.on('mouseenter', layer, () => setCursor(true));
     map.on('mouseleave', layer, () => setCursor(false));
   }
@@ -120,6 +127,41 @@ function applyStadiumPitchPaint(map: Map) {
   map.setPaintProperty(STADIUM_PITCH, 'circle-blur', 0.15);
 }
 
+function applyStadiumLabelLayer(map: Map, show: boolean) {
+  if (!show) {
+    if (map.getLayer(STADIUM_LABEL)) {
+      map.setLayoutProperty(STADIUM_LABEL, 'visibility', 'none');
+    }
+    return;
+  }
+
+  if (map.getLayer(STADIUM_LABEL)) {
+    map.setLayoutProperty(STADIUM_LABEL, 'visibility', 'visible');
+    return;
+  }
+
+  map.addLayer({
+    id: STADIUM_LABEL,
+    type: 'symbol',
+    source: STADIUM_SOURCE,
+    layout: {
+      'text-field': ['get', 'name'],
+      'text-font': ['Open Sans Bold', 'Arial Unicode MS Bold'],
+      'text-size': ['case', ['get', 'highlighted'], 13, 11],
+      'text-offset': [0, 1.35],
+      'text-anchor': 'top',
+      'text-allow-overlap': true,
+      'text-ignore-placement': true,
+    },
+    paint: {
+      'text-color': '#ffffff',
+      'text-halo-color': 'rgba(0, 0, 0, 0.8)',
+      'text-halo-width': 1.5,
+      'text-opacity': ['case', ['get', 'highlighted'], 1, 0.85],
+    },
+  });
+}
+
 export async function upsertStadiumLayers(
   map: Map,
   stadiums: Stadium[],
@@ -136,6 +178,7 @@ export async function upsertStadiumLayers(
       map.setPaintProperty(STADIUM_GLOW, 'circle-color', accent);
     }
     if (map.getLayer(STADIUM_PITCH)) applyStadiumPitchPaint(map);
+    applyStadiumLabelLayer(map, options?.showStadiumNameLabels ?? false);
     return;
   }
 
@@ -184,6 +227,7 @@ export async function upsertStadiumLayers(
     },
   });
 
+  applyStadiumLabelLayer(map, options?.showStadiumNameLabels ?? false);
   bindStadiumInteractions(map);
 }
 
@@ -276,10 +320,11 @@ export function clearTeamRouteLayers(map: Map) {
 }
 
 export function removeStadiumLayers(map: Map) {
-  for (const id of [STADIUM_LAYER, STADIUM_PITCH, STADIUM_GLOW]) {
+  for (const id of [STADIUM_LABEL, STADIUM_LAYER, STADIUM_PITCH, STADIUM_GLOW]) {
     if (map.getLayer(id)) map.removeLayer(id);
   }
   if (map.getSource(STADIUM_SOURCE)) map.removeSource(STADIUM_SOURCE);
+  resetStadiumLayerBindings(map);
 }
 
 export function clearTeamLayers(map: Map) {

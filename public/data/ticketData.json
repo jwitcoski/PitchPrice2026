@@ -1,18 +1,130 @@
 {
-  "lumen-field": { "priceMin": 110, "priceMax": 2900, "currency": "USD", "label": "Est. secondary market range", "categories": ["Cat 3", "Cat 1", "Hospitality"], "easterEgg": "Seattle rain: free. Sounders atmosphere: priceless." },
-  "levis-stadium": { "priceMin": 125, "priceMax": 3400, "currency": "USD", "label": "Est. secondary market range", "categories": ["Cat 3", "Cat 1", "Club"], "easterEgg": "Silicon Valley parking: download an app for that." },
-  "sofi-stadium": { "priceMin": 120, "priceMax": 3700, "currency": "USD", "label": "Est. secondary market range", "categories": ["Category 3", "Category 1", "Hospitality"], "easterEgg": "Ticket Price: Too expensive. Dubioza Kolektiv soundtrack playlist: Free." },
-  "att-stadium": { "priceMin": 105, "priceMax": 3500, "currency": "USD", "label": "Est. secondary market range", "categories": ["Cat 3", "Cat 1", "VIP"], "easterEgg": "Everything's bigger in Texas — including the receipt." },
-  "nrg-stadium": { "priceMin": 95, "priceMax": 2800, "currency": "USD", "label": "Est. secondary market range", "categories": ["Standard", "Premium", "Suite"], "easterEgg": "Rodeo parking skills: finally useful." },
-  "arrowhead-stadium": { "priceMin": 90, "priceMax": 2600, "currency": "USD", "label": "Est. secondary market range", "categories": ["Cat 3", "Cat 1", "Club"], "easterEgg": "Loudest crowd record not included in ticket price." },
-  "mercedes-benz-stadium": { "priceMin": 100, "priceMax": 3100, "currency": "USD", "label": "Est. secondary market range", "categories": ["Category 3", "Category 1", "Suite"], "easterEgg": "The halo roof: always on." },
-  "gillette-stadium": { "priceMin": 100, "priceMax": 3000, "currency": "USD", "label": "Est. secondary market range", "categories": ["Cat 3", "Cat 1", "VIP"], "easterEgg": "Boston 'wicked' is free to say. Parking is not." },
-  "metlife-stadium": { "priceMin": 95, "priceMax": 4200, "currency": "USD", "label": "Est. secondary market range (Final premium)", "categories": ["Category 3", "Category 1", "VIP"], "easterEgg": "Final ticket? Might cost more than a used car." },
-  "lincoln-financial-field": { "priceMin": 98, "priceMax": 2950, "currency": "USD", "label": "Est. secondary market range", "categories": ["Cat 3", "Cat 1", "Club"], "easterEgg": "Cheesesteak before kickoff: mandatory." },
-  "hard-rock-stadium": { "priceMin": 115, "priceMax": 3300, "currency": "USD", "label": "Est. secondary market range", "categories": ["Cat 3", "Cat 1", "Hospitality"], "easterEgg": "South Beach afterparty: budget separately." },
-  "bmo-field": { "priceMin": 85, "priceMax": 2400, "currency": "USD", "label": "Est. secondary market range", "categories": ["Standard", "Premium", "Club"], "easterEgg": "Poutine in stadium: worth it." },
-  "bc-place": { "priceMin": 110, "priceMax": 2900, "currency": "USD", "label": "Est. secondary market range", "categories": ["Standard", "Premium", "Club"], "easterEgg": "Rain in Vancouver: included." },
-  "estadio-azteca": { "priceMin": 80, "priceMax": 2800, "currency": "USD", "label": "Est. secondary market range", "categories": ["Cat 3", "Cat 1", "Palco"], "easterEgg": "Altitude: free. Extra oxygen: priceless." },
-  "estadio-akron": { "priceMin": 70, "priceMax": 2200, "currency": "USD", "label": "Est. secondary market range", "categories": ["General", "Preferente", "VIP"], "easterEgg": "Chivas passion: louder than your wallet." },
-  "estadio-bbva": { "priceMin": 75, "priceMax": 2350, "currency": "USD", "label": "Est. secondary market range", "categories": ["Cat 3", "Cat 1", "Palco"], "easterEgg": "Monterrey mountains: best free view." }
+  "lumen-field": {
+    "priceMin": 110,
+    "priceMax": 2900,
+    "currency": "USD",
+    "label": "Illustrative resale estimates only — not official match prices.",
+    "categories": ["Category 3 (budget seats)", "Category 1 (better view)", "Hospitality (premium packages)"],
+    "easterEgg": "Seattle rain: free. Sounders atmosphere: priceless."
+  },
+  "levis-stadium": {
+    "priceMin": 125,
+    "priceMax": 3400,
+    "currency": "USD",
+    "label": "Illustrative resale estimates only — not official match prices.",
+    "categories": ["Category 3 (budget seats)", "Category 1 (better view)", "Club seats (premium)"],
+    "easterEgg": "Silicon Valley parking: download an app for that."
+  },
+  "sofi-stadium": {
+    "priceMin": 120,
+    "priceMax": 3700,
+    "currency": "USD",
+    "label": "Illustrative resale estimates only — not official match prices.",
+    "categories": ["Category 3 (budget seats)", "Category 1 (better view)", "Hospitality (premium packages)"],
+    "easterEgg": "Ticket Price: Too expensive. Dubioza Kolektiv soundtrack playlist: Free."
+  },
+  "att-stadium": {
+    "priceMin": 105,
+    "priceMax": 3500,
+    "currency": "USD",
+    "label": "Illustrative resale estimates only — not official match prices.",
+    "categories": ["Category 3 (budget seats)", "Category 1 (better view)", "VIP (premium packages)"],
+    "easterEgg": "Everything's bigger in Texas — including the receipt."
+  },
+  "nrg-stadium": {
+    "priceMin": 95,
+    "priceMax": 2800,
+    "currency": "USD",
+    "label": "Illustrative resale estimates only — not official match prices.",
+    "categories": ["Standard (budget seats)", "Premium (better view)", "Suite (premium packages)"],
+    "easterEgg": "Rodeo parking skills: finally useful."
+  },
+  "arrowhead-stadium": {
+    "priceMin": 90,
+    "priceMax": 2600,
+    "currency": "USD",
+    "label": "Illustrative resale estimates only — not official match prices.",
+    "categories": ["Category 3 (budget seats)", "Category 1 (better view)", "Club seats (premium)"],
+    "easterEgg": "Loudest crowd record not included in ticket price."
+  },
+  "mercedes-benz-stadium": {
+    "priceMin": 100,
+    "priceMax": 3100,
+    "currency": "USD",
+    "label": "Illustrative resale estimates only — not official match prices.",
+    "categories": ["Category 3 (budget seats)", "Category 1 (better view)", "Suite (premium packages)"],
+    "easterEgg": "The halo roof: always on."
+  },
+  "gillette-stadium": {
+    "priceMin": 100,
+    "priceMax": 3000,
+    "currency": "USD",
+    "label": "Illustrative resale estimates only — not official match prices.",
+    "categories": ["Category 3 (budget seats)", "Category 1 (better view)", "VIP (premium packages)"],
+    "easterEgg": "Boston 'wicked' is free to say. Parking is not."
+  },
+  "metlife-stadium": {
+    "priceMin": 95,
+    "priceMax": 4200,
+    "currency": "USD",
+    "label": "Illustrative resale estimates only — not official match prices. Final-round demand may push the high end up.",
+    "categories": ["Category 3 (budget seats)", "Category 1 (better view)", "VIP (premium packages)"],
+    "easterEgg": "Final ticket? Might cost more than a used car."
+  },
+  "lincoln-financial-field": {
+    "priceMin": 98,
+    "priceMax": 2950,
+    "currency": "USD",
+    "label": "Illustrative resale estimates only — not official match prices.",
+    "categories": ["Category 3 (budget seats)", "Category 1 (better view)", "Club seats (premium)"],
+    "easterEgg": "Cheesesteak before kickoff: mandatory."
+  },
+  "hard-rock-stadium": {
+    "priceMin": 115,
+    "priceMax": 3300,
+    "currency": "USD",
+    "label": "Illustrative resale estimates only — not official match prices.",
+    "categories": ["Category 3 (budget seats)", "Category 1 (better view)", "Hospitality (premium packages)"],
+    "easterEgg": "South Beach afterparty: budget separately."
+  },
+  "bmo-field": {
+    "priceMin": 85,
+    "priceMax": 2400,
+    "currency": "USD",
+    "label": "Illustrative resale estimates only — not official match prices.",
+    "categories": ["Standard (budget seats)", "Premium (better view)", "Club seats (premium)"],
+    "easterEgg": "Poutine in stadium: worth it."
+  },
+  "bc-place": {
+    "priceMin": 110,
+    "priceMax": 2900,
+    "currency": "USD",
+    "label": "Illustrative resale estimates only — not official match prices.",
+    "categories": ["Standard (budget seats)", "Premium (better view)", "Club seats (premium)"],
+    "easterEgg": "Rain in Vancouver: included."
+  },
+  "estadio-azteca": {
+    "priceMin": 80,
+    "priceMax": 2800,
+    "currency": "USD",
+    "label": "Illustrative resale estimates only — not official match prices.",
+    "categories": ["Category 3 (budget seats)", "Category 1 (better view)", "Palco / hospitality (premium)"],
+    "easterEgg": "Altitude: free. Extra oxygen: priceless."
+  },
+  "estadio-akron": {
+    "priceMin": 70,
+    "priceMax": 2200,
+    "currency": "USD",
+    "label": "Illustrative resale estimates only — not official match prices.",
+    "categories": ["General admission (budget)", "Preferente (better view)", "VIP (premium packages)"],
+    "easterEgg": "Chivas passion: louder than your wallet."
+  },
+  "estadio-bbva": {
+    "priceMin": 75,
+    "priceMax": 2350,
+    "currency": "USD",
+    "label": "Illustrative resale estimates only — not official match prices.",
+    "categories": ["Category 3 (budget seats)", "Category 1 (better view)", "Palco / hospitality (premium)"],
+    "easterEgg": "Monterrey mountains: best free view."
+  }
 }

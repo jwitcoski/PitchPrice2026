@@ -9,6 +9,10 @@ import {
 } from 'react';
 import { publicUrl } from '../lib/publicUrl';
 import { enrichTeamsWithVenues } from '../lib/teamVenues';
+import {
+  isKnockoutOnlyMatchup,
+  pickBanterOpponentFromFixture,
+} from '../lib/parseFixtureTeams';
 import type {
   FixturesByStadium,
   Persona,
@@ -39,6 +43,15 @@ interface AppContextValue {
   activeTicket: TicketRange | null;
   activeFixtures: import('../types').Fixture[];
   demoMode: boolean;
+  stadium3dEnabled: boolean;
+  setStadium3dEnabled: (enabled: boolean) => void;
+  demoRevealTicket: boolean;
+  setDemoRevealTicket: (reveal: boolean) => void;
+  banterOpponentId: string | null;
+  banterKnockoutMode: boolean;
+  banterFixtureMatchup: string | null;
+  setBanterFromFixture: (matchup: string) => void;
+  clearBanter: () => void;
 }
 
 const AppContext = createContext<AppContextValue | null>(null);
@@ -56,6 +69,13 @@ export function AppProvider({ children }: { children: ReactNode }) {
   const [dataLoading, setDataLoading] = useState(true);
   const [introGeneration, setIntroGeneration] = useState(0);
   const [selectionId, setSelectionId] = useState(0);
+  const [stadium3dEnabled, setStadium3dEnabled] = useState(false);
+  const [demoRevealTicket, setDemoRevealTicket] = useState(false);
+  const [banterOpponentId, setBanterOpponentId] = useState<string | null>(null);
+  const [banterKnockoutMode, setBanterKnockoutMode] = useState(false);
+  const [banterFixtureMatchup, setBanterFixtureMatchup] = useState<string | null>(
+    null,
+  );
 
   const demoMode =
     typeof window !== 'undefined' &&
@@ -95,6 +115,9 @@ export function AppProvider({ children }: { children: ReactNode }) {
     setPersona(null);
     setTeamId(null);
     setActiveStadiumId(null);
+    setBanterOpponentId(null);
+    setBanterKnockoutMode(false);
+    setBanterFixtureMatchup(null);
     setIntroGeneration((n) => n + 1);
     sessionStorage.removeItem('pitchprice-onboarded');
   }, []);
@@ -112,6 +135,35 @@ export function AppProvider({ children }: { children: ReactNode }) {
   const activeTicket = activeStadiumId ? tickets[activeStadiumId] ?? null : null;
   const activeFixtures = activeStadiumId ? fixtures[activeStadiumId] ?? [] : [];
 
+  const clearBanter = useCallback(() => {
+    setBanterOpponentId(null);
+    setBanterKnockoutMode(false);
+    setBanterFixtureMatchup(null);
+  }, []);
+
+  const setBanterFromFixture = useCallback(
+    (matchup: string) => {
+      if (teams.length === 0) return;
+      setBanterFixtureMatchup(matchup);
+      if (isKnockoutOnlyMatchup(matchup, teams)) {
+        setBanterOpponentId(null);
+        setBanterKnockoutMode(true);
+        return;
+      }
+      setBanterKnockoutMode(false);
+      setBanterOpponentId(pickBanterOpponentFromFixture(matchup, teams));
+    },
+    [teams],
+  );
+
+  const setActiveStadiumIdWrapped = useCallback((id: string | null) => {
+    setActiveStadiumId(id);
+    if (!id) setStadium3dEnabled(false);
+    setBanterOpponentId(null);
+    setBanterKnockoutMode(false);
+    setBanterFixtureMatchup(null);
+  }, []);
+
   const value: AppContextValue = {
     persona,
     teamId,
@@ -127,12 +179,21 @@ export function AppProvider({ children }: { children: ReactNode }) {
     resetOnboarding,
     introGeneration,
     selectionId,
-    setActiveStadiumId,
+    setActiveStadiumId: setActiveStadiumIdWrapped,
     selectedTeam,
     activeStadium,
     activeTicket,
     activeFixtures,
     demoMode,
+    stadium3dEnabled,
+    setStadium3dEnabled,
+    demoRevealTicket,
+    setDemoRevealTicket,
+    banterOpponentId,
+    banterKnockoutMode,
+    banterFixtureMatchup,
+    setBanterFromFixture,
+    clearBanter,
   };
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;

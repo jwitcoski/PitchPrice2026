@@ -1,4 +1,5 @@
 import { AppProvider, useApp } from './context/AppContext';
+import { Map3DToggle } from './components/Map3DToggle';
 import { MapBackButton } from './components/MapBackButton';
 import { MapCanvas } from './components/MapCanvas';
 import { MatchSidebar } from './components/MatchSidebar';
@@ -22,6 +23,7 @@ function AppShell() {
       <main className={`main-layout ${onboardingComplete ? 'visible' : ''}`}>
         <div className="map-panel">
           <MapBackButton />
+          <Map3DToggle />
           <MapCanvas />
         </div>
         <MatchSidebar />

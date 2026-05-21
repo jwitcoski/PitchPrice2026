@@ -1,9 +1,18 @@
 import { useApp } from '../context/AppContext';
+import { BosniaBanterPanel } from './BosniaBanterPanel';
 import { TicketPriceBar } from './TicketPriceBar';
 
 export function MatchSidebar() {
-  const { activeStadium, activeFixtures, activeTicket, persona, selectedTeam } =
-    useApp();
+  const {
+    activeStadium,
+    activeFixtures,
+    activeTicket,
+    persona,
+    selectedTeam,
+    demoRevealTicket,
+    banterFixtureMatchup,
+    setBanterFromFixture,
+  } = useApp();
 
   if (!activeStadium) {
     return (
@@ -17,6 +26,7 @@ export function MatchSidebar() {
               {selectedTeam.stadiumIds.length === 1 ? '' : 's'} — click a marker.
             </p>
           )}
+          <BosniaBanterPanel />
         </div>
       </aside>
     );
@@ -32,6 +42,8 @@ export function MatchSidebar() {
           {activeStadium.city}, {activeStadium.country}
         </p>
       </header>
+
+      <BosniaBanterPanel />
 
       {heroFixture && (
         <div
@@ -63,16 +75,28 @@ export function MatchSidebar() {
       <section className="fixtures-section">
         <h3>Fixtures</h3>
         <ul>
-          {activeFixtures.map((f, i) => (
-            <li key={`${f.date}-${i}`}>
-              <strong>{f.date}</strong> — {f.matchup}
-              <span className="fixture-stage">{f.stage}</span>
-            </li>
-          ))}
+          {activeFixtures.map((f, i) => {
+            const rowKey = `${f.date}-${i}`;
+            const isActive = banterFixtureMatchup === f.matchup;
+            return (
+              <li key={rowKey}>
+                <button
+                  type="button"
+                  className={`fixture-row${isActive ? ' fixture-row--active' : ''}`}
+                  onClick={() => setBanterFromFixture(f.matchup)}
+                >
+                  <strong>{f.date}</strong> — {f.matchup}
+                  <span className="fixture-stage">{f.stage}</span>
+                </button>
+              </li>
+            );
+          })}
         </ul>
       </section>
 
-      {activeTicket && <TicketPriceBar ticket={activeTicket} />}
+      {activeTicket && (
+        <TicketPriceBar ticket={activeTicket} demoReveal={demoRevealTicket} />
+      )}
     </aside>
   );
 }

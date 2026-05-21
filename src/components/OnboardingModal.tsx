@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from 'react';
 import { useApp } from '../context/AppContext';
 import { MapTilerLogo } from './MapTilerLogo';
 import { SoccerBallIcon } from './SoccerBallIcon';
+import { DEMO_TIMINGS } from '../lib/demoScript';
 import type { Persona } from '../types';
 import '../styles/onboarding.css';
 
@@ -23,9 +24,12 @@ export function OnboardingModal() {
     const t1 = setTimeout(() => {
       setPersona('team');
       setStep('team');
-      setTeamId('bosnia');
-    }, 400);
-    const t2 = setTimeout(() => completeOnboarding('team', 'bosnia'), 2800);
+      setTeamId('switzerland');
+    }, DEMO_TIMINGS.startTeamMs);
+    const t2 = setTimeout(
+      () => completeOnboarding('team', 'switzerland'),
+      DEMO_TIMINGS.completeOnboardingMs,
+    );
     return () => {
       clearTimeout(t1);
       clearTimeout(t2);

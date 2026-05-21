@@ -3,8 +3,15 @@ import { Map, MapStyle, config } from '@maptiler/sdk';
 import '@maptiler/sdk/dist/maptiler-sdk.css';
 import { useApp } from '../context/AppContext';
 import { runPersonaIntro, flyToStadium } from '../lib/mapChoreography';
+import {
+  applyStadium3dView,
+  disposeStadium3dLayer,
+  flyToStadium3d,
+} from '../lib/mapStadium3d';
 import { resetMapView } from '../lib/mapReset';
-import { getStadiumLayerId, upsertStadiumLayers } from '../lib/mapLayers';
+import { getStadiumLayerId } from '../lib/mapLayers';
+import { DEMO_TIMINGS } from '../lib/demoScript';
+import { refreshMapOverlays } from '../lib/mapOverlays';
 import { applyStadiumMapTheme } from '../lib/themes';
 
 config.apiKey = import.meta.env.VITE_MAPTILER_API_KEY ?? '';
@@ -27,6 +34,9 @@ export function MapCanvas() {
     dataLoading,
     introGeneration,
     selectionId,
+    stadium3dEnabled,
+    setStadium3dEnabled,
+    setDemoRevealTicket,
   } = useApp();
 
   useEffect(() => {
@@ -44,7 +54,11 @@ export function MapCanvas() {
     mapRef.current = map;
 
     map.on('load', () => {
-      void upsertStadiumLayers(map, stadiums, { accentColor: '#69f0ae' });
+      void refreshMapOverlays(map, {
+        stadiums,
+        accentColor: '#69f0ae',
+        primaryColor: '#a7f3d0',
+      });
     });
 
     map.on('click', getStadiumLayerId(), (e) => {
@@ -54,6 +68,7 @@ export function MapCanvas() {
     });
 
     return () => {
+      disposeStadium3dLayer(map);
       map.remove();
       mapRef.current = null;
     };
@@ -111,28 +126,60 @@ export function MapCanvas() {
     const stadium = stadiums.find((s) => s.id === activeStadiumId);
     if (!stadium) return;
 
-    if (persona === 'city' || persona === 'tournament') {
-      applyStadiumMapTheme(map, stadium);
-    }
+    const accent =
+      persona === 'team' && selectedTeam
+        ? selectedTeam.colors.accent
+        : stadium.theme.accent;
+    const primary =
+      persona === 'team' && selectedTeam
+        ? selectedTeam.colors.primary
+        : stadium.theme.primary;
 
     const highlight =
-      persona === 'team'
-        ? selectedTeam?.stadiumIds
-        : [activeStadiumId];
+      persona === 'team' ? selectedTeam?.stadiumIds : [activeStadiumId];
 
-    void upsertStadiumLayers(map, stadiums, {
-      highlightIds: highlight,
-      accentColor:
-        persona === 'team' && selectedTeam
-          ? selectedTeam.colors.accent
-          : stadium.theme.accent,
-      primaryColor:
-        persona === 'team' && selectedTeam
-          ? selectedTeam.colors.primary
-          : stadium.theme.primary,
-    });
+    const run = async () => {
+      if (!map.loaded()) {
+        await new Promise<void>((resolve) => map.once('load', () => resolve()));
+      }
 
-    void flyToStadium(map, stadium, persona);
+      if (stadium3dEnabled) {
+        await applyStadium3dView(
+          map,
+          stadium,
+          true,
+          persona,
+          selectedTeam,
+          accent,
+        );
+        await flyToStadium3d(map, stadium);
+      } else {
+        await applyStadium3dView(
+          map,
+          stadium,
+          false,
+          persona,
+          selectedTeam,
+          accent,
+        );
+        if (persona === 'city' || persona === 'tournament') {
+          applyStadiumMapTheme(map, stadium);
+        }
+        await flyToStadium(map, stadium, persona);
+      }
+
+      await refreshMapOverlays(map, {
+        stadiums,
+        highlightIds: highlight,
+        accentColor: accent,
+        primaryColor: primary,
+        showStadiumNameLabels: stadium3dEnabled,
+        team: selectedTeam,
+        persona,
+      });
+    };
+
+    void run();
   }, [
     activeStadiumId,
     persona,
@@ -140,21 +187,27 @@ export function MapCanvas() {
     selectedTeam,
     cityStadiumId,
     onboardingComplete,
+    stadium3dEnabled,
   ]);
 
   useEffect(() => {
     if (!demoMode || dataLoading || !onboardingComplete) return;
 
-    const timers: ReturnType<typeof setTimeout>[] = [];
-
-    timers.push(
-      setTimeout(() => {
-        setActiveStadiumId('sofi-stadium');
-      }, 9000),
-    );
+    const timers = [
+      setTimeout(() => setActiveStadiumId('sofi-stadium'), DEMO_TIMINGS.selectStadiumMs),
+      setTimeout(() => setStadium3dEnabled(true), DEMO_TIMINGS.enable3dMs),
+      setTimeout(() => setDemoRevealTicket(true), DEMO_TIMINGS.showTicketEasterEggMs),
+    ];
 
     return () => timers.forEach(clearTimeout);
-  }, [demoMode, dataLoading, onboardingComplete, setActiveStadiumId]);
+  }, [
+    demoMode,
+    dataLoading,
+    onboardingComplete,
+    setActiveStadiumId,
+    setStadium3dEnabled,
+    setDemoRevealTicket,
+  ]);
 
   if (!import.meta.env.VITE_MAPTILER_API_KEY) {
     return (

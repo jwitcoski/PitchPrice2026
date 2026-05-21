@@ -36,10 +36,10 @@
   {
     "id": "sofi-stadium",
     "name": "SoFi Stadium",
-    "city": "Los Angeles",
+    "city": "Inglewood",
     "country": "USA",
-    "lng": -118.264,
-    "lat": 33.953,
+    "lng": -118.3396,
+    "lat": 33.9536,
     "isOfficialHost2026": true,
     "theme": {
       "primary": "#552583",
