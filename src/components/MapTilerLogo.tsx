@@ -1,3 +1,5 @@
+import { publicUrl } from '../lib/publicUrl';
+
 interface Props {
   height?: number;
   className?: string;
@@ -7,7 +9,7 @@ interface Props {
 export function MapTilerLogo({ height = 18, className }: Props) {
   return (
     <img
-      src="/maptiler-logo.svg"
+      src={publicUrl('maptiler-logo.svg')}
       alt="MapTiler"
       className={className}
       height={height}

@@ -7,6 +7,7 @@ import {
   useState,
   type ReactNode,
 } from 'react';
+import { publicUrl } from '../lib/publicUrl';
 import { enrichTeamsWithVenues } from '../lib/teamVenues';
 import type {
   FixturesByStadium,
@@ -62,10 +63,10 @@ export function AppProvider({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     Promise.all([
-      fetch('/data/stadiums.json').then((r) => r.json()),
-      fetch('/data/teams.json').then((r) => r.json()),
-      fetch('/data/fixtures.json').then((r) => r.json()),
-      fetch('/data/ticketData.json').then((r) => r.json()),
+      fetch(publicUrl('data/stadiums.json')).then((r) => r.json()),
+      fetch(publicUrl('data/teams.json')).then((r) => r.json()),
+      fetch(publicUrl('data/fixtures.json')).then((r) => r.json()),
+      fetch(publicUrl('data/ticketData.json')).then((r) => r.json()),
     ])
       .then(([s, t, f, tk]) => {
         setStadiums(s);

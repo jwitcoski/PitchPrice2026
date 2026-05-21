@@ -34,7 +34,13 @@ Edit `public/data/*.json` to add stadiums, teams, fixtures, and ticket ranges.
 
 ## Deploy (witcoskitech.com)
 
-The app is a static build deployed to **https://witcoskitech.com/pitchprice/** via the same S3 + CloudFront setup as the [Cloud Resume Challenge](https://witcoskitech.com) site. It syncs only the `pitchprice/` prefix so the main site is untouched.
+The app is a static build deployed under the `pitchprice/` prefix on the same S3 + CloudFront bucket as [witcoskitech.com](https://witcoskitech.com).
+
+**Live URL (use this):** [https://witcoskitech.com/pitchprice/index.html](https://witcoskitech.com/pitchprice/index.html)
+
+CloudFront’s default root object only applies to `/`, not `/pitchprice/`, so `https://witcoskitech.com/pitchprice/` alone can return **Access Denied** until you add a CloudFront rewrite (optional). The `index.html` path always works.
+
+> **Note:** The resume site deploy must exclude `pitchprice/*` from `--delete` or it will wipe this app on the next resume push.
 
 ### 1. Create the GitHub repo
 
